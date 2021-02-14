@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask import render_template
 import pymongo
 import json
+from app import utilities
+
 st_bp = Blueprint("st", __name__)
 
 
@@ -14,7 +16,7 @@ def status():
 def logfile():
     offset = int(request.args.get("offset"))
     limit = int(request.args.get("limit"))
-    myclient = pymongo.MongoClient("mongodb://39.107.249.35:3388/")
+    myclient = utilities.dburi.DBuri()
     mydb = myclient["cluster_record"]
     total_size = mydb.command("collstats", "log")["count"]
     mycol = mydb["log"]

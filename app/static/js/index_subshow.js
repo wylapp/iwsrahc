@@ -63,8 +63,9 @@ function submitfile() {
         processData: false,
         xhr:xhrOnProgress(function(e){
             var per=100 * e.loaded / e.total;//计算百分比
+            per = per.toFixed(2);
             var son =  document.getElementById("uploadbar");
-            console.log(per);
+            // console.log(per);
             son.innerHTML = per + "%";
             son.style.width = per + "%";
         }),
@@ -90,6 +91,9 @@ function submitfile() {
             // console.log(result)
         }
     });
+    $("#submitfiles").attr("disabled", true);
+    $("#submitfiles").css("cursor","no-drop");
+    $("#refreshit").show()
 }
 /*
  * THE FOLLOWING PART CONTROLS GENE SELECTION TABLE.

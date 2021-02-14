@@ -80,6 +80,9 @@ $(document).ready(function () {
           geneTablehadler(t);
         }
       })
+      $("#typeconfirm").attr("disabled", true);
+    $("#typeconfirm").css("cursor","no-drop");
+    $("#refreshit").show()
     }
   })
 });

@@ -85,6 +85,7 @@ padding:5px; border-bottom: solid 1px #ddd;">
                                 </div>
                                 <button id="submitfiles" class="btn btn-primary btn-sm" onclick="submitfile()">Upload
                                 </button>
+                                <p id="refreshit" style="display:none;">To change the dataset, please <a href="javascript:history.go(0)">refresh</a> the web page.</p>
                             </form>
                             <script>
                                 function filename(t) {
@@ -92,7 +93,6 @@ padding:5px; border-bottom: solid 1px #ddd;">
                                 $("#filelabel")[0].innerText = filesname;
                                 }
                             </script>
-                            <hr>
                         </div>
                     </div>
                 </div>

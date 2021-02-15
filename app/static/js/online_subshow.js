@@ -65,6 +65,13 @@ $(document).ready(function () {
       )
     }
     else {
+      let types="";
+      if($('#material').find(':selected').text()=="mRNA-seq"){
+        types="mRNA";
+      }
+      else if($('#material').find(':selected').text()=="microRNA-seq"){
+        types="microRNA"
+      }
       $.ajax({
         url: '/cancers',
         method: 'post',
@@ -73,7 +80,7 @@ $(document).ready(function () {
         data: JSON.stringify({
           //"uid": $('#runtime').val(),
           "cancer": $('#cancertype').find(':selected').text(),
-          "material": $('#material').find(':selected').text()
+          "material": types
         }),
         success: function (t) {
           $("#beginer").hide();
@@ -215,10 +222,17 @@ function conFirmgenes() {
     //alert(JSON.stringify(genelist.map(v => v["id"])));
     $("#maskOfProgressImage").show();
     let dataform = new FormData();
+    let types="";
+    if($('#material').find(':selected').text()=="mRNA-seq"){
+      types="mRNA";
+    }
+    else if($('#material').find(':selected').text()=="microRNA-seq"){
+      types="microRNA"
+    }
     dataform.append("runtime", document.getElementById("uid").innerText);
     dataform.append("genelist", JSON.stringify(genelist.map(v => v["id"])));
     dataform.append("cancer", $('#cancertype').find(':selected').text());
-    dataform.append("material", $('#material').find(':selected').text());
+    dataform.append("material", types);
     // $('#conFirm').attr("disabled", "disabled");
     $.toast({
       type: 'info',

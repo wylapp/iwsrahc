@@ -5,7 +5,7 @@ def cancertypes():
     myclient = dburi.DBuri()
     mydb = myclient["cluster_record"]
     mycol = mydb["cancers"]
-    mydoc = mycol.find_one({"version": 2})["cancer_list"]
+    mydoc = mycol.find_one({"version": 3})["cancer_list"]
     for items in mydoc:
         if len(items["type"]) == 0:
             items["disabled"] = 1

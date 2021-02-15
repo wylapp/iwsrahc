@@ -36,7 +36,7 @@ def clusterpack(genelist, uid, **kwargs):
         asyncio.run(intodb(uid, "Local upload"))
     else:
         grid3 = pd.read_csv(os.path.join("app", "data", kwargs["type"], kwargs["text"] + ".csv"), index_col=0, header=0)
-        asyncio.run(intodb(uid, '-'.join(['TCGA', kwargs["text"],  kwargs["type"]])))
+        asyncio.run(intodb(uid, '-'.join(['TCGA', kwargs["text"],  kwargs["type"], "-seq"])))
     lifespan_name = grid3.columns[1]
     censor_name = grid3.columns[0]
     grid3 = grid3.sort_values(by=lifespan_name)
